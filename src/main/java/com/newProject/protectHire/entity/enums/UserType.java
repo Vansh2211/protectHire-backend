@@ -1,5 +1,5 @@
 package com.newProject.protectHire.entity.enums;
 
-public class UserType {
-    
+public enum UserType {
+    CLIENT, GUARD, COMPANY
 }

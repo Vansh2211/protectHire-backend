@@ -1,5 +1,5 @@
 package com.newProject.protectHire.entity.enums;
 
-public class BookingStatus {
-    
+public enum BookingStatus {
+    PENDING, ACCEPTED, REJECTED, COMPLETED, CANCELLED
 }
