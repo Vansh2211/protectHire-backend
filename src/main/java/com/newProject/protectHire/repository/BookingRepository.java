@@ -55,4 +55,6 @@ public interface BookingRepository extends JpaRepository<Booking, UUID> {
     
     @Query("SELECT b FROM Booking b WHERE b.startDate = :date AND b.status IN ('CONFIRMED', 'IN_PROGRESS')")
     List<Booking> findBookingsForDate(@Param("date") LocalDate date);
+
+    
 }

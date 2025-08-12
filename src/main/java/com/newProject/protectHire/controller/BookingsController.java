@@ -107,7 +107,7 @@ public class BookingsController {
     @PreAuthorize("hasAnyRole('CLIENT', 'GUARD')")
     public ResponseEntity<BookingStatsDTO> getBookingStats(Authentication authentication) {
         try {
-            BookingStatsDTO stats = bookingService.getBookingStats(authentication.getName());
+            BookingStatsDTO stats = bookingService.getBookingById(authentication.getName());
             return ResponseEntity.ok(stats);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
