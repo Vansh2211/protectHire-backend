@@ -3,6 +3,10 @@ package com.newProject.protectHire.dto.auth;
 import java.util.UUID;
 
 public class AuthResponse {
+    public AuthResponse(Object object, Object object2, String string) {
+        //TODO Auto-generated constructor stub
+    }
+
     private String token;
     private UserDTO user;
     
