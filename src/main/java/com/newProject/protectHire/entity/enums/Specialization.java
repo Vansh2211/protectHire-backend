@@ -1,0 +1,14 @@
+package com.newProject.protectHire.entity.enums;
+
+public enum Specialization {
+    RESIDENTIAL_SECURITY,
+    COMMERCIAL_SECURITY,
+    EVENT_SECURITY,
+    PERSONAL_PROTECTION,
+    ARMED_SECURITY,
+    UNARMED_SECURITY,
+    MOBILE_PATROL,
+    CORPORATE_SECURITY,
+    RETAIL_SECURITY,
+    CONSTRUCTION_SECURITY
+}

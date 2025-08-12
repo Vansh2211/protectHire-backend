@@ -1,21 +1,19 @@
 package com.newProject.protectHire.entity;
 
-import com.newProject.protectHire.entity.enums.BookingStatus;
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.UUID;
 
+import com.newProject.protectHire.entity.enums.BookingStatus;
+
 @Entity
 @Table(name = "bookings")
 public class Booking {
-    
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue
     private UUID id;
     
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,7 +36,7 @@ public class Booking {
     @Column(name = "end_time", nullable = false)
     private LocalTime endTime;
     
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false)
     private String address;
     
     @Column(columnDefinition = "TEXT")
@@ -47,124 +45,85 @@ public class Booking {
     @Column(name = "estimated_cost", nullable = false, precision = 10, scale = 2)
     private BigDecimal estimatedCost;
     
+    @Column(name = "actual_cost", precision = 10, scale = 2)
+    private BigDecimal actualCost;
+    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BookingStatus status = BookingStatus.PENDING;
     
-    @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
     
-    // Constructors
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+    
+    @Column(name = "cancelled_at")
+    private LocalDateTime cancelledAt;
+    
+    @Column(name = "cancellation_reason")
+    private String cancellationReason;
+    
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+    
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+    
+    // Constructors, getters, and setters
     public Booking() {}
     
-    public Booking(GuardProfile guard, ClientProfile client, LocalDate startDate, 
-                  LocalDate endDate, LocalTime startTime, LocalTime endTime,
-                  String address, BigDecimal estimatedCost) {
-        this.guard = guard;
-        this.client = client;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.address = address;
-        this.estimatedCost = estimatedCost;
-    }
-    
     // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
     
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    public GuardProfile getGuard() { return guard; }
+    public void setGuard(GuardProfile guard) { this.guard = guard; }
     
-    public GuardProfile getGuard() {
-        return guard;
-    }
+    public ClientProfile getClient() { return client; }
+    public void setClient(ClientProfile client) { this.client = client; }
     
-    public void setGuard(GuardProfile guard) {
-        this.guard = guard;
-    }
+    public LocalDate getStartDate() { return startDate; }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
     
-    public ClientProfile getClient() {
-        return client;
-    }
+    public LocalDate getEndDate() { return endDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
     
-    public void setClient(ClientProfile client) {
-        this.client = client;
-    }
+    public LocalTime getStartTime() { return startTime; }
+    public void setStartTime(LocalTime startTime) { this.startTime = startTime; }
     
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+    public LocalTime getEndTime() { return endTime; }
+    public void setEndTime(LocalTime endTime) { this.endTime = endTime; }
     
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
     
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+    public String getInstructions() { return instructions; }
+    public void setInstructions(String instructions) { this.instructions = instructions; }
     
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+    public BigDecimal getEstimatedCost() { return estimatedCost; }
+    public void setEstimatedCost(BigDecimal estimatedCost) { this.estimatedCost = estimatedCost; }
     
-    public LocalTime getStartTime() {
-        return startTime;
-    }
+    public BigDecimal getActualCost() { return actualCost; }
+    public void setActualCost(BigDecimal actualCost) { this.actualCost = actualCost; }
     
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
+    public BookingStatus getStatus() { return status; }
+    public void setStatus(BookingStatus status) { this.status = status; }
     
-    public LocalTime getEndTime() {
-        return endTime;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
-    }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
     
-    public String getAddress() {
-        return address;
-    }
+    public LocalDateTime getCancelledAt() { return cancelledAt; }
+    public void setCancelledAt(LocalDateTime cancelledAt) { this.cancelledAt = cancelledAt; }
     
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    
-    public String getInstructions() {
-        return instructions;
-    }
-    
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-    
-    public BigDecimal getEstimatedCost() {
-        return estimatedCost;
-    }
-    
-    public void setEstimatedCost(BigDecimal estimatedCost) {
-        this.estimatedCost = estimatedCost;
-    }
-    
-    public BookingStatus getStatus() {
-        return status;
-    }
-    
-    public void setStatus(BookingStatus status) {
-        this.status = status;
-    }
-    
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-    
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+    public String getCancellationReason() { return cancellationReason; }
+    public void setCancellationReason(String cancellationReason) { this.cancellationReason = cancellationReason; }
 }
