@@ -83,4 +83,19 @@ public class GuardProfile extends User {
     
     public Integer getTotalReviews() { return totalReviews; }
     public void setTotalReviews(Integer totalReviews) { this.totalReviews = totalReviews; }
+
+    public String getFirstName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFirstName'");
+    }
+
+    public String getLastName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLastName'");
+    }
+
+    public Object getPhoneNumber() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPhoneNumber'");
+    }
 }

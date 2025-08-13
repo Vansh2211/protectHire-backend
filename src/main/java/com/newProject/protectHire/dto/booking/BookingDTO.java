@@ -158,4 +158,24 @@ public class BookingDTO {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    public void setGuardPhone(Object phoneNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setGuardPhone'");
+    }
+
+    public void setClientPhone(Object phoneNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setClientPhone'");
+    }
+
+    public void setActualCost(BigDecimal actualCost) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setActualCost'");
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setUpdatedAt'");
+    }
 }

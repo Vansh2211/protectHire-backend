@@ -110,4 +110,14 @@ public class BookingStatsDTO {
     public void setAcceptanceRate(double acceptanceRate) {
         this.acceptanceRate = acceptanceRate;
     }
+
+    public void setConfirmedBookings(Long countByGuardIdAndStatus) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setConfirmedBookings'");
+    }
+
+    public void setAverageRating(Double averageRating) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAverageRating'");
+    }
 }

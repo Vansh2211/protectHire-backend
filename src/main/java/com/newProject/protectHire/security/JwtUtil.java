@@ -63,6 +63,7 @@ public class JwtUtil {
         return createRefreshToken(claims, userDetails.getUsername());
     }
     
+    @SuppressWarnings("deprecation")
     private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
@@ -73,6 +74,7 @@ public class JwtUtil {
                 .compact();
     }
     
+    @SuppressWarnings("deprecation")
     private String createRefreshToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
