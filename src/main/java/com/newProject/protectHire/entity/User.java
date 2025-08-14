@@ -47,6 +47,10 @@ public class User {
     public UUID getId() {
         return id;
     }
+
+    public boolean isActive() {
+        return true; // Assuming all users are active by default, modify as needed
+    }
     
     public void setId(UUID id) {
         this.id = id;
@@ -90,5 +94,10 @@ public class User {
     
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getPassword() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
     }
 }
